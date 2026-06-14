@@ -1,0 +1,631 @@
+:root {
+    --primary-color: #688b8a;
+    /* stone: メインカラー（背景、強調、文字など幅広く） */
+    --secondary-color: #a0b084;
+    /* sage: セカンダリカラー（バッジ、アイコンなど） */
+    --accent-color: #a57c65;
+    /* leather: アクセントカラー（見出し、ボタンなど） */
+    --honeydew: #faefd4;
+    /* buttermilk: ベースの背景や吹き出し */
+    --text-color: #688b8a;
+    /* テキストカラーもstoneに統一し、4色以外を排除 */
+    --light-bg: #faefd4;
+    /* 全体の背景もbuttermilkに統一 */
+    --card-bg: #ffffff;
+    --bubble-user: var(--honeydew);
+    /* ユーザーの吹き出しをハニーデューに */
+    --bubble-ai: #f2f2f2;
+    --shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+    --border-radius: 16px;
+    --font-family: 'Zen Maru Gothic', 'Hiragino Maru Gothic ProN', 'Meiryo', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    background-color: var(--light-bg);
+    line-height: 1.8;
+    font-size: 17px;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+    /* ロゴの途中改行を防ぐ */
+}
+
+.nav-links {
+    display: flex;
+    gap: 1rem;
+    /* 隙間を少し狭める */
+    flex-wrap: wrap;
+    /* 折り返しを許容してレイアウト崩れを防ぐ */
+    justify-content: flex-end;
+    /* 右寄せ */
+    align-items: center;
+    /* 1行と2行の項目の縦位置を中央で揃える */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.nav-subtitle {
+    font-size: 0.8em;
+    color: #64748b;
+    margin-top: -2px;
+    /* 行間をさらに詰める */
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+}
+
+.nav-links a:hover .nav-subtitle,
+.nav-links a.active .nav-subtitle {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    cursor: pointer;
+}
+
+/* Main Content */
+.content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.page-section {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+/* gradient highlight removed */
+
+.hero .subtitle {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+/* Cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin: 3rem 0;
+}
+
+.info-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2.5rem 2rem;
+    text-align: left;
+    /* 中央揃えから左揃えに変更 */
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    border-top: 5px solid var(--secondary-color);
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 3rem;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+    /* アイコンは中央のまま */
+}
+
+.info-card h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    /* タイトルも中央のまま */
+    white-space: nowrap;
+    /* 不自然な改行を防ぐため、1行に収める */
+    letter-spacing: -0.5px;
+    /* 文字間を少しだけ詰めてあふれにくくする */
+}
+
+/* Chapter Headers */
+.chapter-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.chapter-badge {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--card-bg);
+    padding: 0.6rem 2.5rem;
+    /* パディングをさらに大きく */
+    border-radius: 40px;
+    /* 丸みを強める */
+    font-weight: bold;
+    font-size: 1.5rem;
+    /* フォントをさらに大きく */
+    margin-bottom: 1rem;
+}
+
+.chapter-header h2 {
+    font-size: 2.2rem;
+    line-height: 1.4;
+    color: var(--accent-color);
+}
+
+.chapter-desc {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #666;
+}
+
+/* Step Cards */
+.step-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.step-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.step-number {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 0.2rem 0.8rem;
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+.friendly-list {
+    margin: 1.5rem 0 1.5rem 2rem;
+}
+
+.friendly-list li {
+    margin-bottom: 0.5rem;
+}
+
+.alert-box {
+    background-color: #fff9e6;
+    border-left: 4px solid #ffca28;
+    padding: 1.5rem;
+    border-radius: 4px 8px 8px 4px;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.alert-box i {
+    color: #ffb300;
+    font-size: 1.5rem;
+}
+
+/* Chat Mockup */
+.chat-mockup {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chat-bubble {
+    max-width: 80%;
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+    position: relative;
+}
+
+.user-bubble {
+    background-color: var(--bubble-user);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.ai-bubble {
+    background-color: var(--bubble-ai);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.ai-name {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 0.3rem;
+}
+
+/* Buttons */
+.nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+.next-btn {
+    background-color: var(--secondary-color);
+    color: white;
+    box-shadow: 0 4px 10px rgba(226, 149, 120, 0.3);
+}
+
+.next-btn:hover {
+    background-color: #d08468;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(226, 149, 120, 0.4);
+}
+
+.prev-btn {
+    background-color: #e0e0e0;
+    color: var(--text-color);
+}
+
+.prev-btn:hover {
+    background-color: #d0d0d0;
+}
+
+.next-btn-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px dashed #ddd;
+}
+
+/* Tricks Grid */
+.tricks-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.trick-item {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border-left: 6px solid var(--accent-color);
+}
+
+.trick-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.trick-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    font-size: 1rem;
+    color: var(--card-bg);
+}
+
+.prompt-box {
+    background-color: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 0.5rem;
+}
+
+.prompt-label {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.prompt-text {
+    font-family: monospace;
+    font-size: 1.05rem;
+    white-space: pre-wrap;
+    word-break: break-all;
+    color: #334155;
+}
+
+.copy-btn {
+    background: white;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+    color: #475569;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.copy-btn:hover {
+    background: #f8fafc;
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+/* Ideas Container */
+.ideas-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.idea-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.idea-image {
+    height: 70px;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    color: white;
+}
+
+.idea-content {
+    padding: 1.5rem;
+}
+
+.idea-category {
+    font-size: 0.8rem;
+    color: white;
+    background: var(--accent-color);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.idea-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+/* Promises Container */
+.promises-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.promise-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.promise-icon {
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    flex-shrink: 0;
+}
+
+.promise-content h3 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--accent-color);
+}
+
+/* Toast */
+.toast {
+    position: fixed;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--text-color);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: bottom 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.toast.show {
+    bottom: 30px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        gap: 0;
+    }
+
+    .nav-links.active-menu {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem;
+        border-radius: 0;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .navigation-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .navigation-buttons button {
+        width: 100%;
+    }
+
+    .promise-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+/* Print Settings */
+@media print {
+    @page {
+        size: A4;
+        margin: 15mm;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
+    body {
+        background-color: var(--light-bg);
+        font-size: 11pt;
+        /* A4用紙で読みやすいサイズに調整 */
+    }
+
+    .page-section {
+        display: block !important;
+        opacity: 1 !important;
+        page-break-after: always;
+    }
+
+    .navbar,
+    .navigation-buttons,
+    .mobile-menu-btn,
+    .copy-btn,
+    .toast {
+        display: none !important;
+    }
+
+    .content {
+        padding: 0;
+        max-width: none;
+    }
+
+    .card-container,
+    .step-card,
+    .trick-item,
+    .alert-box {
+        page-break-inside: avoid;
+    }
+}

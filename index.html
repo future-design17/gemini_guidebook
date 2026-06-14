@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Gemini プロンプト活用の教科書</title>
+    <link rel="stylesheet" href="style.css?v=20">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <header class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-book-open" style="font-size: 1.5rem; margin-right: 0.3rem;"></i>
+                <div style="display: flex; flex-direction: column; line-height: 1.1;">
+                    <span style="font-size: 0.85rem; color: var(--accent-color);">Google Gemini</span>
+                    <span style="font-size: 1.05rem; color: var(--accent-color);">プロンプト活用の教科書</span>
+                </div>
+            </div>
+            <nav class="nav-links">
+                <a href="#intro" class="active">はじめに</a>
+                <a href="#ch1">第1章<span class="nav-subtitle">(準備)</span></a>
+                <a href="#ch2">第2章<span class="nav-subtitle">(基本操作)</span></a>
+                <a href="#ch3">第3章<span class="nav-subtitle">(プロンプト)</span></a>
+                <a href="#ch4">第4章<span class="nav-subtitle">(質問力アップ)</span></a>
+                <a href="#ch5">第5章<span class="nav-subtitle">(アイデア)</span></a>
+                <a href="#ch6">第6章<span class="nav-subtitle">(お約束)</span></a>
+                <a href="#ch7">第7章<span class="nav-subtitle">(まとめ)</span></a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </header>
+
+        <main class="content">
+            <!-- 各セクションの内容はJSで動的に表示するか、スクロールで表示する -->
+            <section id="intro" class="page-section active-section">
+                <div class="hero">
+                    <h1>はじめてでも大丈夫！<br>GoogleのAI「Gemini（ジェミニ）」<br>とおしゃべりしよう</h1>
+                    <p class="subtitle">むずかしい設定はゼロ。あなたの頼れるパートナーになります。</p>
+                </div>
+
+                <div class="card-container">
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fa-solid fa-robot"></i></div>
+                        <h2>Geminiってなんだろう？</h2>
+                        <p>Googleが作った、とっても賢い「AIアシスタント」です。チャットでお願いするだけで、ネット上の情報を調べたり、色々な作業を代わりにやってくれます。</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fa-solid fa-gift"></i></div>
+                        <h2>ここがすごい！</h2>
+                        <p>Googleのサービス（GmailやGoogleドキュメントなど）と連携できるのが一番の強みです。無料で使えるプランでも、十分に賢く頼りになります！</p>
+                    </div>
+                    <div class="info-card">
+                        <div class="card-icon"><i class="fa-solid fa-yen-sign"></i></div>
+                        <h2>お金はかかるの？</h2>
+                        <p>基本は<strong>無料</strong>で使えます！もっと高度な機能を使いたい方向けに有料プランもありますが、最初は無料プランでまったく問題ありません。</p>
+                    </div>
+                </div>
+
+                <div class="feature-highlight"
+                    style="margin: 3rem 0; padding: 2rem; background: white; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--accent-color);">
+                    <h3
+                        style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem; font-size: 1.4rem;">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Geminiにできること（一例）
+                    </h3>
+                    <div
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--secondary-color);">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--secondary-color); font-size: 1.1rem;"><i
+                                    class="fa-solid fa-magnifying-glass"></i> リサーチ・調べ物</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-color);">
+                                「〇〇駅から△△駅までの行き方」「近くの美味しいイタリアン」など、パッと調べてわかりやすく要約してくれます。</p>
+                        </div>
+
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--primary-color);">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--primary-color); font-size: 1.1rem;"><i
+                                    class="fa-solid fa-pen-nib"></i> 文章・資料作成</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-color);">
+                                「お礼のメール」「PTAのお知らせ」「メルカリの出品文」など、面倒な文章づくりをプロのように代行してくれます。</p>
+                        </div>
+
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--accent-color);">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--accent-color); font-size: 1.1rem;"><i
+                                    class="fa-solid fa-chart-line"></i> データ分析・アイデア</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-color);">
+                                「冷蔵庫の残り物レシピ」「家計簿のやりくりアドバイス」「家族旅行のプラン」など、相談相手にもなってくれます。</p>
+                        </div>
+
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--primary-color);">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--primary-color); font-size: 1.1rem;"><i
+                                    class="fa-regular fa-image"></i> 画像生成</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-color);">
+                                「年賀状に使えるチワワのイラスト」「水彩画風の風景」など、言葉で指示するだけでオリジナルの絵を描いてくれます。</p>
+                        </div>
+
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--secondary-color);">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--secondary-color); font-size: 1.1rem;"><i
+                                    class="fa-solid fa-language"></i> 翻訳・語学学習</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-color);">
+                                「英語のメニューを日本語にして」「旅行先で使える挨拶を教えて」など、語学サポートや翻訳も得意です。</p>
+                        </div>
+
+                        <div
+                            style="background: var(--card-bg); padding: 1.5rem; border-radius: 8px; border-top: 3px solid var(--accent-color);">
+                            <h4 style="margin-bottom: 0.5rem; color: var(--accent-color); font-size: 1.1rem;"><i
+                                    class="fa-solid fa-file-contract"></i> 要約・整理</h4>
+                            <p style="font-size: 0.95rem; color: var(--text-color);">
+                                「長いニュース記事を3行でまとめて」「音声の書き起こしを綺麗な文章に直して」など、忙しい時の助けになります。</p>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="next-btn-container">
+                    <button class="nav-btn next-btn" data-target="ch1">第1章 <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <section id="ch1" class="page-section" style="display: none;">
+                <div class="chapter-header">
+                    <span class="chapter-badge">第1章</span>
+                    <h2>Geminiを始める準備</h2>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">STEP 1</span> スマホやパソコンで検索する</h3>
+                    <div class="step-content">
+                        <p>まずは、いつもインターネットを見ている画面（ChromeやSafariなど）を開きましょう。</p>
+                        <p>上の方にある検索バーに<strong>「Gemini」</strong>と打ち込んで、Enterキーを押します。</p>
+                        <!-- 実際のスクショ画像を入れる場所 -->
+                        <div class="instruction-image" style="text-align: center; margin: 1.5rem 0;">
+                            <img src="chrome_search_gemini.png" alt="Google Chromeの検索バーにGeminiと入力する画面"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                style="max-width: 80%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+                            <div
+                                style="display: none; background: #e2e8f0; border-radius: 8px; padding: 2rem 1rem; color: #64748b; font-size: 0.9rem; border: 2px dashed #cbd5e1; flex-direction: column; align-items: center; justify-content: center;">
+                                <i class="fa-regular fa-image"
+                                    style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                                （ここに検索画面のスクリーンショットが入ります）<br>
+                                ※「chrome_search_gemini.png」という名前で保存してください
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step-card">
+                    <h3><span class="step-number">STEP 2</span> Googleの画面からログインする</h3>
+                    <div class="step-content">
+                        <p>検索して一番上に出てくる「Google Gemini」の公式サイトを開きます。</p>
+                        <p>画面にある<strong>「Geminiを試す」ボタン</strong>や、右上の<strong>ログインボタン</strong>を押して、あなたのアカウントでログインします。</p>
+                        <!-- 実際のスクショ画像を入れる場所 -->
+                        <div class="instruction-image" style="text-align: center; margin: 1.5rem 0;">
+                            <img src="google_login_screen.png" alt="Googleのログイン画面"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                style="max-width: 60%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+                            <div
+                                style="display: none; background: #e2e8f0; border-radius: 8px; padding: 2rem 1rem; color: #64748b; font-size: 0.9rem; border: 2px dashed #cbd5e1; flex-direction: column; align-items: center; justify-content: center;">
+                                <i class="fa-regular fa-image"
+                                    style="font-size: 1.5rem; margin-bottom: 0.5rem; display: block;"></i>
+                                （ここにログイン画面のスクリーンショットが入ります）<br>
+                                ※「google_login_screen.png」という名前で保存してください
+                            </div>
+                        </div>
+                        <div class="alert-box tip" style="margin-top: 1rem;">
+                            <i class="fa-regular fa-lightbulb"></i>
+                            <p><strong>ポイント：</strong> いつもスマートフォンなどで使っている「Gmail」のアドレスとパスワードを入れるだけでOKです！</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" data-target="intro"><i class="fa-solid fa-arrow-left"></i>
+                        前へ戻る</button>
+                    <button class="nav-btn next-btn" data-target="ch2">第2章 <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <section id="ch2" class="page-section" style="display: none;">
+                <div class="chapter-header">
+                    <span class="chapter-badge">第2章</span>
+                    <h2>Geminiとおしゃべりしてみよう</h2>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-content">
+                        <p>ログインできたらいよいよスタートです！画面の中央にある<strong>「Gemini
+                                に相談」</strong>という入力欄に、聞いてみたいことを文字で打ち込み、Enterキーを押してください。</p>
+
+                        <!-- 実際のスクショ画像を入れる場所 -->
+                        <div class="instruction-image" style="text-align: center; margin: 1.5rem 0;">
+                            <img src="gemini_chat_interface.png" alt="Geminiの入力画面"
+                                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                style="max-width: 80%; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+                            <div
+                                style="display: none; background: #e2e8f0; border-radius: 8px; padding: 3rem 1rem; color: #64748b; font-size: 0.9rem; border: 2px dashed #cbd5e1; flex-direction: column; align-items: center; justify-content: center;">
+                                <i class="fa-regular fa-image"
+                                    style="font-size: 2rem; margin-bottom: 0.5rem; display: block;"></i>
+                                （ここに実際のGemini入力画面のスクリーンショットが入ります）<br>
+                                ※「gemini_chat_interface.png」という名前で保存してください
+                            </div>
+                        </div>
+
+                        <!-- 画面下部のボタン解説 -->
+                        <div class="action-pills-container"
+                            style="margin: 2rem 0; padding: 1.5rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid var(--secondary-color);">
+                            <h4 style="margin-bottom: 1rem; color: var(--accent-color); font-size: 1.15rem;"><i
+                                    class="fa-solid fa-wand-magic-sparkles"></i> こんなこともできます（入力欄の下のボタン）</h4>
+                            <p style="font-size: 0.95rem; margin-bottom: 1.2rem;">
+                                入力欄のすぐ下にあるボタンは、大きく2つの役割に分かれています。</p>
+
+                            <div
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1.5rem;">
+                                <!-- 左側：＋ボタンの解説 -->
+                                <div
+                                    style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                    <h5
+                                        style="color: #475569; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; display: flex; align-items: center; flex-wrap: wrap;">
+                                        <span
+                                            style="background: #e2e8f0; border-radius: 50%; width: 24px; height: 24px; display: inline-flex; justify-content: center; align-items: center; margin-right: 0.5rem; flex-shrink: 0;"><i
+                                                class="fa-solid fa-plus" style="font-size: 0.8rem;"></i></span>
+                                        <strong style="white-space: nowrap;">「＋」ボタン</strong>
+                                        <span
+                                            style="font-size: 0.9rem; margin-left: 0.2rem; white-space: nowrap;">（ファイルを渡す）</span>
+                                    </h5>
+
+                                    <div class="instruction-image" style="text-align: center; margin: 1rem 0;">
+                                        <img src="gemini_plus_menu.png" alt="Geminiの＋ボタンメニュー"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                            style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+
+                                        <div
+                                            style="display: none; background: #f1f5f9; border-radius: 8px; padding: 1.5rem 0.5rem; color: #64748b; font-size: 0.85rem; border: 2px dashed #cbd5e1; flex-direction: column; align-items: center; justify-content: center;">
+                                            <i class="fa-regular fa-image"
+                                                style="font-size: 1.2rem; margin-bottom: 0.5rem; display: block;"></i>
+                                            （「＋」のメニュー画像）<br>
+                                            ※gemini_plus_menu.png
+                                        </div>
+                                    </div>
+
+                                    <p style="font-size: 0.9rem; color: #4b5563;">
+                                        手持ちの<strong>「写真」「PDF資料」「Googleドライブのファイル」</strong>などをGeminiに読み込ませたい時に使います。</p>
+                                    <ul
+                                        style="font-size: 0.85rem; color: #64748b; margin-top: 0.8rem; padding-left: 1.2rem;">
+                                        <li>ファイルをアップロード</li>
+                                        <li>ドライブから追加</li>
+                                    </ul>
+                                </div>
+
+                                <!-- 右側：ツールボタンの解説 -->
+                                <div
+                                    style="background: white; padding: 1.5rem; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+                                    <h5
+                                        style="color: #475569; font-size: 1rem; margin-bottom: 1rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; display: flex; align-items: center; flex-wrap: wrap;">
+                                        <span
+                                            style="background: #e2e8f0; border-radius: 12px; height: 24px; padding: 0 0.6rem; display: inline-flex; justify-content: center; align-items: center; margin-right: 0.5rem; font-size: 0.75rem; flex-shrink: 0;"><i
+                                                class="fa-solid fa-sliders" style="margin-right: 0.3rem;"></i>
+                                            ツール</span>
+                                        <strong style="white-space: nowrap;">「ツール」ボタン</strong>
+                                        <span
+                                            style="font-size: 0.9rem; margin-left: 0.2rem; white-space: nowrap;">（機能を使う）</span>
+                                    </h5>
+
+                                    <div class="instruction-image" style="text-align: center; margin: 1rem 0;">
+                                        <img src="gemini_tools_menu.png" alt="Geminiのツールメニュー"
+                                            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                            style="max-width: 100%; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+
+                                        <div
+                                            style="display: none; background: #f1f5f9; border-radius: 8px; padding: 1.5rem 0.5rem; color: #64748b; font-size: 0.85rem; border: 2px dashed #cbd5e1; flex-direction: column; align-items: center; justify-content: center;">
+                                            <i class="fa-regular fa-image"
+                                                style="font-size: 1.2rem; margin-bottom: 0.5rem; display: block;"></i>
+                                            （「ツール」のメニュー画像）<br>
+                                            ※gemini_tools_menu.png
+                                        </div>
+                                    </div>
+
+                                    <p style="font-size: 0.9rem; color: #4b5563;">
+                                        自分から質問するのではなく、<strong>Geminiの得意な機能（絵を描く、文章を作るなど）</strong>をワンクリックで呼び出したい時に使います。
+                                    </p>
+                                    <ul
+                                        style="font-size: 0.85rem; color: #64748b; margin-top: 0.8rem; padding-left: 1.2rem;">
+                                        <li>画像の作成</li>
+                                        <li>文章の作成</li>
+                                        <li>計画 / リサーチ 等</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p>たとえば「明日の東京の天気は？」と送ってみると、このようにあっという間に返事が返ってきます。まるで人とLINE（ライン）をしているような感覚ですね。</p>
+
+                        <div class="chat-mockup" style="margin-top: 1rem;">
+                            <div class="chat-bubble user-bubble">
+                                明日の東京の天気は？
+                            </div>
+                            <div class="chat-bubble ai-bubble flex-col">
+                                <div class="ai-name"><i class="fa-solid fa-sparkles"></i> Gemini</div>
+                                明日の東京は晴れのち曇り、最高気温は22度の予想です。お出かけ日和になりそうですね！
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" data-target="ch1"><i class="fa-solid fa-arrow-left"></i>
+                        前へ戻る</button>
+                    <button class="nav-btn next-btn" data-target="ch3">第3章 <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- 第3章：プロンプトの基本 -->
+            <section id="ch3" class="page-section" style="display: none;">
+                <div class="chapter-header">
+                    <span class="chapter-badge">第3章</span>
+                    <h2>AIにお願いする文章<br>（プロンプト）の書き方</h2>
+                </div>
+
+                <div class="step-card">
+                    <div class="step-content">
+                        <p>Geminiにお願いする時の文章や言葉のことを、かっこよく<strong>「プロンプト（指示文）」</strong>と呼びます。</p>
+                        <p>「旅行の計画を立てて」といった簡単な言葉でも答えてくれますが、以下の<strong>「良いプロンプトに必要な４つの要素」</strong>を盛り込むことで、AIの回答精度は劇的に向上します！
+                        </p>
+
+                        <div
+                            style="margin: 2rem 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                            <!-- Role -->
+                            <div
+                                style="background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+                                <h4
+                                    style="background: var(--accent-color); color: white; margin: 0; padding: 1rem; text-align: center; font-size: 1.1rem;">
+                                    <i class="fa-solid fa-user-tie"></i> R: 役割 (Role)
+                                </h4>
+                                <div style="padding: 1.5rem;">
+                                    <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1rem;">
+                                        AIに「あなたは〇〇です」と役割を与える。</p>
+                                    <div
+                                        style="background: #f8fafc; padding: 1rem; border-radius: 6px; border-left: 3px solid #cbd5e1; font-size: 0.9rem; color: #334155;">
+                                        <strong>具体例：</strong><br>「あなたはプロの編集ライターです」「あなたはベテランの旅行プランナーです」
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Objective -->
+                            <div
+                                style="background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+                                <h4
+                                    style="background: var(--accent-color); color: white; margin: 0; padding: 1rem; text-align: center; font-size: 1.1rem;">
+                                    <i class="fa-solid fa-bullseye"></i> O: 目的 (Objective)
+                                </h4>
+                                <div style="padding: 1.5rem;">
+                                    <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1rem;">
+                                        「何のために」その回答が必要なのかを伝える。</p>
+                                    <div
+                                        style="background: #f8fafc; padding: 1rem; border-radius: 6px; border-left: 3px solid #cbd5e1; font-size: 0.9rem; color: #334155;">
+                                        <strong>具体例：</strong><br>「町内会のお祭りの案内状を作るため」「ブログの読者を増やすため」
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Condition -->
+                            <div
+                                style="background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+                                <h4
+                                    style="background: var(--accent-color); color: white; margin: 0; padding: 1rem; text-align: center; font-size: 1.1rem;">
+                                    <i class="fa-solid fa-list-check"></i> C: 条件 (Condition)
+                                </h4>
+                                <div style="padding: 1.5rem;">
+                                    <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1rem;">
+                                        「〇〇の視点で」「〇〇の情報を使って」と制約を加える。</p>
+                                    <div
+                                        style="background: #f8fafc; padding: 1rem; border-radius: 6px; border-left: 3px solid #cbd5e1; font-size: 0.9rem; color: #334155;">
+                                        <strong>具体例：</strong><br>「文字数は200文字で」「小学生でもわかる言葉遣いで」
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Format -->
+                            <div
+                                style="background: white; border-radius: 8px; border: 1px solid #e2e8f0; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+                                <h4
+                                    style="background: var(--accent-color); color: white; margin: 0; padding: 1rem; text-align: center; font-size: 1.1rem;">
+                                    <i class="fa-solid fa-table-cells-large"></i> F: 形式 (Format)
+                                </h4>
+                                <div style="padding: 1.5rem;">
+                                    <p style="font-size: 0.95rem; color: #475569; margin-bottom: 1rem;">
+                                        「リスト形式で」「表で」と出力方法を指定する。</p>
+                                    <div
+                                        style="background: #f8fafc; padding: 1rem; border-radius: 6px; border-left: 3px solid #cbd5e1; font-size: 0.9rem; color: #334155;">
+                                        <strong>具体例：</strong><br>「箇条書きで出してください」「メリットとデメリットの表形式にして」
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="alert-box tip"
+                            style="background: var(--honeydew); border-left: 4px solid var(--accent-color); color: var(--text-color);">
+                            <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--secondary-color);"></i>
+                            <p><strong>R-O-C-F の法則：</strong><br>
+                                この４つをすべて入れる必要はありません！まずは「目的」と「条件」だけなど、できそうなところから組み合わせてお願いしてみましょう。<br><br>
+                                次の章で、具体的な「質問のコツ」と「組み合わせの例」を見てみましょう。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" data-target="ch2"><i class="fa-solid fa-arrow-left"></i>
+                        前へ戻る</button>
+                    <button class="nav-btn next-btn" data-target="ch4">第4章 <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- 旧第3章 -> 第4章 -->
+            <section id="ch4" class="page-section" style="display: none;">
+                <div class="chapter-header">
+                    <span class="chapter-badge">第4章</span>
+                    <h2>自由自在に使いこなす！<br>質問力アップのコツ11選</h2>
+                    <p class="chapter-desc">ちょっとした聞き方の工夫で、Geminiはもっとずっと賢くなります。そのまま真似して使える便利なサンプル集です！</p>
+                </div>
+                <div id="tricks-container" class="tricks-grid">
+                    <!-- JSで動的に構築される想定 -->
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" data-target="ch3"><i class="fa-solid fa-arrow-left"></i>
+                        前へ戻る</button>
+                    <button class="nav-btn next-btn" data-target="ch5">第5章 <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- 旧第4章 -> 第5章 -->
+            <section id="ch5" class="page-section" style="display: none;">
+                <div class="chapter-header">
+                    <span class="chapter-badge">第5章</span>
+                    <h2>毎日がちょっと便利になる！<br>活用アイデア集</h2>
+                    <p class="chapter-desc">毎日の生活でそのまま使える「お願い」の実例です。</p>
+                </div>
+                <div id="ideas-container" class="ideas-container">
+                    <!-- JSで追加 -->
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" data-target="ch4"><i class="fa-solid fa-arrow-left"></i>
+                        前へ戻る</button>
+                    <button class="nav-btn next-btn" data-target="ch6">第6章 <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- 旧第5章 -> 第6章 -->
+            <section id="ch6" class="page-section" style="display: none;">
+                <div class="chapter-header">
+                    <span class="chapter-badge">第6章</span>
+                    <h2>安全に使うための「3つのお約束」</h2>
+                    <p class="chapter-desc">AIを使う上で、これだけ守れば怖くありません！</p>
+                </div>
+                <div id="promises-container" class="promises-container">
+                    <!-- JSで追加 -->
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" data-target="ch5"><i class="fa-solid fa-arrow-left"></i>
+                        前へ戻る</button>
+                    <button class="nav-btn next-btn" data-target="ch7">第7章 <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- 第7章 (まとめ) -->
+            <section id="ch7" class="page-section" style="display: none;">
+                <div class="chapter-header">
+                    <span class="chapter-badge">第7章</span>
+                    <h2>まとめ</h2>
+                    <p class="chapter-desc">ここまで学んだことのおさらいです。あなたも今日からGeminiマスター！</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-content">
+                        <p style="font-size: 1.1rem; text-align: center; margin-bottom: 2rem;">
+                            お疲れ様でした！<br>このサイトで学んだポイントを振り返ってみましょう。</p>
+
+                        <div style="display: flex; flex-direction: column; gap: 1rem;">
+                            <!-- ポイント1 -->
+                            <div
+                                style="background: #f8fafc; border-left: 5px solid var(--primary-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                <h3
+                                    style="color: var(--secondary-color); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-comment-dots"></i> 1. はじめの一歩
+                                </h3>
+                                <p style="margin-bottom: 0; color: #475569; font-size: 1.05rem; line-height: 1.6;">
+                                    質問箱に言葉を入れるだけでOK。まずは難しく考えず、<strong>気軽に話しかけて</strong>みましょう。</p>
+                            </div>
+
+                            <!-- ポイント2 -->
+                            <div
+                                style="background: #f8fafc; border-left: 5px solid var(--primary-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                <h3
+                                    style="color: var(--secondary-color); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-puzzle-piece"></i> 2. プロンプトの基本
+                                </h3>
+                                <p style="margin-bottom: 0; color: #475569; font-size: 1.05rem; line-height: 1.6;">
+                                    <strong>R（役割）- O（目的）- C（条件）- F（形式）</strong>を意識してお願いすると、回答の質がグンと上がります。
+                                </p>
+                            </div>
+
+                            <!-- ポイント3 -->
+                            <div
+                                style="background: #f8fafc; border-left: 5px solid var(--primary-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                <h3
+                                    style="color: var(--secondary-color); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-lightbulb"></i> 3. 質問力アップのコツ
+                                </h3>
+                                <p style="margin-bottom: 0; color: #475569; font-size: 1.05rem; line-height: 1.6;">
+                                    ルールを箇条書きにしたり「〜しないで」と指示するなど、<strong>ちょっとした工夫次第</strong>で無限の活用ができます。</p>
+                            </div>
+
+                            <!-- ポイント4 -->
+                            <div
+                                style="background: #f8fafc; border-left: 5px solid var(--primary-color); padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                                <h3
+                                    style="color: var(--secondary-color); margin-top: 0; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+                                    <i class="fa-solid fa-shield-halved"></i> 4. 安全な使い方
+                                </h3>
+                                <p style="margin-bottom: 0; color: #475569; font-size: 1.05rem; line-height: 1.6;">
+                                    個人情報の入力には注意しつつ、変な質問をしても壊れることはありません。<strong>楽しんで使うのが一番</strong>です！</p>
+                            </div>
+                        </div>
+
+                        <div
+                            style="margin-top: 3rem; text-align: center; background: var(--light-bg); border: 2px solid var(--honeydew); padding: 2rem; border-radius: 12px;">
+                            <i class="fa-solid fa-rocket"
+                                style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                            <p
+                                style="font-weight: bold; font-size: 1.2rem; color: var(--text-color); margin-bottom: 0.5rem;">
+                                AIは使えば使うほど、あなたの頼もしいパートナーに成長します！
+                            </p>
+                            <p style="color: var(--accent-color); font-weight: bold; margin-bottom: 0;">
+                                さあ、今日から実際にGeminiを開いて色々な質問を投げてみましょう。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" data-target="ch6"><i class="fa-solid fa-arrow-left"></i>
+                        前へ戻る</button>
+                    <button class="nav-btn next-btn" data-target="intro"
+                        style="background-color: var(--secondary-color); color: white;">トップへ戻る <i
+                            class="fa-solid fa-house"></i></button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- トースト通知 -->
+    <div id="toast" class="toast">コピーしました！</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
